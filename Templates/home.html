@@ -4,15 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Scraper</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            padding-right: 100px;
+            padding-left: 100px;
+        }
+        h1 {
+            color: #333;
+        }
+        .news-article {
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #1e90ff;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #2b00ff;
+        }
+    </style>
 </head>
 <body>
-    <a href="https://www.agribusinessglobal.com/agrochemicals/" style="text-decoration: none; color: black;">
-        <h1>Latest News: Agrochemicals - AgriBusiness Global</h1>
-    </a>
+    <h1>Latest News</h1>
     {% for article in articles %}
         <div class="news-article">
-            <h2><a href="{{ url_for('article', url=article.link) }}">{{ article.title }}</a></h2>
+            <h2><a href="{{ url_for('article', url=article.link) }}" target="_blank">{{ article.title }}</a></h2>
         </div>
     {% endfor %}
 </body>
