@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>Latest News</h1>
+    <a href="https://www.agribusinessglobal.com/agrochemicals/" style="text-decoration: none; color: black;">
+        <h1>Latest News: Agrochemicals - AgriBusiness Global</h1>
+    </a>
     {% for article in articles %}
         <div class="news-article">
             <h2><a href="{{ url_for('article', url=article.link) }}">{{ article.title }}</a></h2>
