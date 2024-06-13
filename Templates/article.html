@@ -4,13 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article Content</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            padding-right: 100px;
+            padding-left: 100px
+        }
+        h1 {
+            color: #333;
+        }
+        .article-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #1e90ff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Article Content</h1>
+    <h1>{{ heading }}</h1>
     <div class="article-content">
         {{ content|safe }}
     </div>
-    <a href="{{ url_for('home') }}">Back to home</a>
+    <a href="/">Back to home</a>
 </body>
 </html>
