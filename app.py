@@ -33,8 +33,19 @@ def scrape_article_content(url):
 
     soup = BeautifulSoup(response.content, 'html.parser')
     paragraphs = soup.find_all('p')
-    content = '\n'.join([p.text for p in paragraphs])
-    return content
+    # content = '\n'.join([p.text for p in paragraphs])
+    specific_class = 'post-author-bio'  # Replace with the class you want to remove
+    for div in soup.find_all('div', class_=specific_class):
+        div.decompose()
+
+    specific_class_form = 'comment-form'  # Replace with the class you want to remove
+    for form in soup.find_all('form', class_=specific_class_form):
+        form.decompose()
+
+    heading = soup.find('h1').text
+    content = [p.text for p in paragraphs]
+
+    return heading, content
 
 @app.route('/')
 def home():
@@ -44,8 +55,8 @@ def home():
 @app.route('/article')
 def article():
     article_url = request.args.get('url')
-    content = scrape_article_content(article_url)
-    return render_template('article.html', content=content)
+    heading, content = scrape_article_content(article_url)
+    return render_template('article.html', heading=heading, content=content)
 
 if __name__ == '__main__':
     app.run(debug=True)
